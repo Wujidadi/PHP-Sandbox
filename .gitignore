@@ -1,0 +1,31 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+vendor/
+
+# npm
+node_modules
+
+# Electron
+dist/
+out/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code related
+.vscode/
+
+# For this project
+storage/PChome/BpwmsAGV/PdsReply/input.json
+storage/PChome/BpwmsAGV/PdsReply/output.json
