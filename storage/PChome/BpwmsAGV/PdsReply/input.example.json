@@ -1,0 +1,23 @@
+{
+    "OwnerCode": "010001",
+    "OrderCode": "P20220510000001",
+    "OrderType": 1,
+    "IsAllowLack": 1,
+    "Priority": 0,
+    "NextStep": "跨庫調撥出貨碼頭",
+    "TargetCode": "P07",
+    "ContainerType": null,
+    "OriOrderCode": "P20220510000001",
+    "IsSelfSatisfy": 1,
+    "SkuTotal": 1,
+    "SkuList": [
+        {
+            "RowNum": 1,
+            "SkuCode": "T220112-A01-00000001",
+            "SkuQty": 3,
+            "SkuLevel": 1,
+            "ExpiryDate": "2023/01/01",
+            "OutBatchCode": "220112001"
+        }
+    ]
+}
