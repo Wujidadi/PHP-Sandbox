@@ -27,5 +27,6 @@ out/
 .vscode/
 
 # For this project
+cli/Test/
 storage/PChome/BpwmsAGV/PdsReply/input.json
 storage/PChome/BpwmsAGV/PdsReply/output.json
