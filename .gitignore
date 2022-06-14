@@ -30,3 +30,5 @@ out/
 cli/Test/
 storage/PChome/BpwmsAGV/PdsReply/input.json
 storage/PChome/BpwmsAGV/PdsReply/output.json
+storage/PChome/CompressedLogs/input.txt
+storage/PChome/CompressedLogs/output.txt

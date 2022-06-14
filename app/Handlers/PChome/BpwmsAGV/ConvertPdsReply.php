@@ -14,7 +14,7 @@ class ConvertPdsReply extends Handler
     /**
      * 輸入值 JSON 檔路徑
      *
-     * 內容為符合 `wcs_trans_log` 資料表 `WTL_DISPATCHER_RAW_DATA` 欄位格式的 JSON 資料
+     * JSON 檔內容應為符合 `wcs_trans_log` 資料表 `WTL_DISPATCHER_RAW_DATA` 欄位格式的 JSON 資料
      *
      * @var string
      */
@@ -30,7 +30,7 @@ class ConvertPdsReply extends Handler
     /**
      * 輸出 JSON 檔路徑
      *
-     * 內容為符合 AGV 出庫單按箱回傳 API 格式的 JSON 資料
+     * JSON 檔內容應內容為符合 AGV 出庫單按箱回傳 API 格式的 JSON 資料
      *
      * @var string
      */
@@ -99,7 +99,7 @@ class ConvertPdsReply extends Handler
     public function Run()
     {
         $this->_StartTime = time();
-        $this->_ContainerCode = '99ZA' . substr((string) $this->_StartTime, -5);
+        $this->_ContainerCode = '12A' . $this->_RandomLetter() . substr((string) $this->_StartTime, -6);
         $this->_FakePosCode = (int) date('YmdHis');
         $this->_GetInputJSON();
         $this->_ConvertData();
@@ -155,7 +155,7 @@ class ConvertPdsReply extends Handler
                 'sku_level' => $sku->SkuLevel,
                 'amount' => $sku->SkuQty,
                 'owner_code' => self::OWNER_CODE,
-                'expiration_date' => strtotime($sku->ExpiryDate) * 1000,
+                'expiration_date' => isset($sku->ExpiryDate) ? strtotime($sku->ExpiryDate) * 1000 : null,
                 'out_batch_code' => $sku->OutBatchCode,
                 'pick_order_item_finish_time' => isset($sku->CompleteTime) ? strtotime($sku->CompleteTime) * 1000 : $this->_GetPresentMillisecond(),
                 'lack_flag' => 0,
@@ -222,5 +222,17 @@ class ConvertPdsReply extends Handler
         $decimalPart = $now[1];
         $msPart = str_pad(substr($decimalPart, 0, 3), 3, '0');
         return (int) ($integerPart . $msPart);
+    }
+
+    /**
+     * 隨機產生一個大寫英文字母
+     *
+     * @return string
+     */
+    protected function _RandomLetter()
+    {
+        $dict = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $seed = mt_rand(0, 25);
+        return substr($dict, $seed, 1);
     }
 }
