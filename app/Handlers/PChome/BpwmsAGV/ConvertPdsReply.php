@@ -72,6 +72,13 @@ class ConvertPdsReply extends Handler
     protected $_ItemList = [];
 
     /**
+     * 商品總數量
+     *
+     * @var integer
+     */
+    protected $_SkuAmount = 0;
+
+    /**
      * 總品項數
      *
      * @var integer
@@ -136,43 +143,47 @@ class ConvertPdsReply extends Handler
     {
         $skuList = [];
 
-        foreach ($this->_InputData->SkuList as $i => $sku)
+        foreach ($this->_InputData as $h => $inputDatum)
         {
-            if ($i > 0)
+            foreach ($inputDatum->SkuList as $i => $sku)
             {
-                $this->_FakePosCode++;
-            }
+                if ($h > 0 || $i > 0)
+                {
+                    $this->_FakePosCode++;
+                }
 
-            if (!in_array($sku->SkuCode, $this->_ItemList))
-            {
-                $this->_ItemList[] = $sku->SkuCode;
-            }
+                // if (!in_array($sku->SkuCode, $this->_ItemList))
+                // {
+                //     $this->_ItemList[] = $sku->SkuCode;
+                // }
+                $this->_TotalItem++;
 
-            $skuList[] = [
-                'out_order_code' => $this->_InputData->OrderCode,
-                'item' => $sku->RowNum,
-                'sku_code' => $sku->SkuCode,
-                'sku_level' => $sku->SkuLevel,
-                'amount' => $sku->SkuQty,
-                'owner_code' => self::OWNER_CODE,
-                'expiration_date' => isset($sku->ExpiryDate) ? strtotime($sku->ExpiryDate) * 1000 : null,
-                'out_batch_code' => $sku->OutBatchCode,
-                'pick_order_item_finish_time' => isset($sku->CompleteTime) ? strtotime($sku->CompleteTime) * 1000 : $this->_GetPresentMillisecond(),
-                'lack_flag' => 0,
-                'is_last_container' => 1,
-                'container_amount' => 1,
-                'sequence_no' => [],
-                'shelf_bin_list' => [
-                    [
-                        'shelf_code' => "FSC{$this->_FakePosCode}",
-                        'shelf_bin_code' => "FSB{$this->_FakePosCode}",
-                        'quantity' => $sku->SkuQty
+                $skuList[] = [
+                    'out_order_code' => $inputDatum->OrderCode,
+                    'item' => $sku->RowNum,
+                    'sku_code' => $sku->SkuCode,
+                    'sku_level' => $sku->SkuLevel,
+                    'amount' => $sku->SkuQty,
+                    'owner_code' => self::OWNER_CODE,
+                    'expiration_date' => isset($sku->ExpiryDate) ? strtotime($sku->ExpiryDate) * 1000 : null,
+                    'out_batch_code' => $sku->OutBatchCode,
+                    'pick_order_item_finish_time' => isset($sku->CompleteTime) ? strtotime($sku->CompleteTime) * 1000 : $this->_GetPresentMillisecond(),
+                    'lack_flag' => 0,
+                    'is_last_container' => 1,
+                    'container_amount' => 1,
+                    'sequence_no' => [],
+                    'shelf_bin_list' => [
+                        [
+                            'shelf_code' => "FSC{$this->_FakePosCode}",
+                            'shelf_bin_code' => "FSB{$this->_FakePosCode}",
+                            'quantity' => $sku->SkuQty
+                        ]
                     ]
-                ]
-            ];
-        }
+                ];
 
-        $this->_TotalItem = count($this->_ItemList);
+                $this->_SkuAmount += $sku->SkuQty;
+            }
+        }
 
         $this->_OutputData = [
             'header' => [
@@ -188,7 +199,7 @@ class ConvertPdsReply extends Handler
                         'container_code' => $this->_ContainerCode,
                         'container_type' => 2,
                         'pallet_code' => '',
-                        'sku_amount' => $this->_InputData->SkuTotal,
+                        'sku_amount' => $this->_SkuAmount,
                         'sku_type_amount' => $this->_TotalItem,
                         'creation_date' => $this->_StartTime * 1000,
                         'picker' => "FAKE",

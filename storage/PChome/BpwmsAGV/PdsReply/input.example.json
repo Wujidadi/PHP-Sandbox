@@ -1,23 +1,48 @@
-{
-    "OwnerCode": "010001",
-    "OrderCode": "P20220510000001",
-    "OrderType": 1,
-    "IsAllowLack": 1,
-    "Priority": 0,
-    "NextStep": "跨庫調撥出貨碼頭",
-    "TargetCode": "P07",
-    "ContainerType": null,
-    "OriOrderCode": "P20220510000001",
-    "IsSelfSatisfy": 1,
-    "SkuTotal": 1,
-    "SkuList": [
-        {
-            "RowNum": 1,
-            "SkuCode": "T220112-A01-00000001",
-            "SkuQty": 3,
-            "SkuLevel": 1,
-            "ExpiryDate": "2023/01/01",
-            "OutBatchCode": "220112001"
-        }
-    ]
-}
+[
+    {
+        "OwnerCode": "010001",
+        "OrderCode": "P20220704000009",
+        "OrderType": 1,
+        "IsAllowLack": 1,
+        "Priority": 0,
+        "NextStep": "跨庫調撥出貨碼頭",
+        "TargetCode": "P03",
+        "ContainerType": "06",
+        "OriOrderCode": "P20220704000009",
+        "IsSelfSatisfy": 0,
+        "SkuTotal": 1,
+        "SkuList": [
+            {
+                "RowNum": 1,
+                "SkuCode": "T220121-A01-00000003",
+                "SkuQty": 2,
+                "SkuLevel": 1,
+                "ExpiryDate": null,
+                "OutBatchCode": "220121001"
+            }
+        ]
+    },
+    {
+        "OwnerCode": "010001",
+        "OrderCode": "P20220704000010",
+        "OrderType": 1,
+        "IsAllowLack": 1,
+        "Priority": 0,
+        "NextStep": "跨庫調撥出貨碼頭",
+        "TargetCode": "P03",
+        "ContainerType": "06",
+        "OriOrderCode": "P20220704000010",
+        "IsSelfSatisfy": 0,
+        "SkuTotal": 1,
+        "SkuList": [
+            {
+                "RowNum": 1,
+                "SkuCode": "T220121-A01-00000003",
+                "SkuQty": 2,
+                "SkuLevel": 1,
+                "ExpiryDate": null,
+                "OutBatchCode": "220121001"
+            }
+        ]
+    }
+]

@@ -9,33 +9,55 @@
         "warehouse_code": "geekplus",
         "container_list": [
             {
-                "container_code": "99ZA52392",
+                "container_code": "12AK919136",
                 "container_type": 2,
                 "pallet_code": "",
-                "sku_amount": 1,
-                "sku_type_amount": 1,
-                "creation_date": 1652752392000,
+                "sku_amount": 4,
+                "sku_type_amount": 2,
+                "creation_date": 1656919136000,
                 "picker": "FAKE",
                 "sku_list": [
                     {
-                        "out_order_code": "P20220510000001",
+                        "out_order_code": "P20220704000009",
                         "item": 1,
-                        "sku_code": "T220112-A01-00000001",
+                        "sku_code": "T220121-A01-00000003",
                         "sku_level": 1,
-                        "amount": 3,
+                        "amount": 2,
                         "owner_code": "010001",
-                        "expiration_date": 1672531200000,
-                        "out_batch_code": "220112001",
-                        "pick_order_item_finish_time": 1652752393002,
+                        "expiration_date": null,
+                        "out_batch_code": "220121001",
+                        "pick_order_item_finish_time": 1656919136815,
                         "lack_flag": 0,
                         "is_last_container": 1,
                         "container_amount": 1,
                         "sequence_no": [],
                         "shelf_bin_list": [
                             {
-                                "shelf_code": "FSC20220517015312",
-                                "shelf_bin_code": "FSB20220517015312",
-                                "quantity": 3
+                                "shelf_code": "FSC20220704071856",
+                                "shelf_bin_code": "FSB20220704071856",
+                                "quantity": 2
+                            }
+                        ]
+                    },
+                    {
+                        "out_order_code": "P20220704000010",
+                        "item": 1,
+                        "sku_code": "T220121-A01-00000003",
+                        "sku_level": 1,
+                        "amount": 2,
+                        "owner_code": "010001",
+                        "expiration_date": null,
+                        "out_batch_code": "220121001",
+                        "pick_order_item_finish_time": 1656919136815,
+                        "lack_flag": 0,
+                        "is_last_container": 1,
+                        "container_amount": 1,
+                        "sequence_no": [],
+                        "shelf_bin_list": [
+                            {
+                                "shelf_code": "FSC20220704071857",
+                                "shelf_bin_code": "FSB20220704071857",
+                                "quantity": 2
                             }
                         ]
                     }
